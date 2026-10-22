@@ -1,0 +1,59 @@
+name: Build ESP32 Firmware Binary (OTA)
+
+on:
+  push:
+    paths:
+      - 'firmware/**'
+      - '.github/workflows/esp32_firmware_build.yml'
+    branches:
+      - '**'
+  pull_request:
+    paths:
+      - 'firmware/**'
+    branches:
+      - '**'
+  workflow_dispatch:
+
+jobs:
+  build-firmware:
+    name: Compile ESP32 Worker Firmware (.bin)
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Cache PlatformIO Core & Packages
+        uses: actions/cache@v4
+        with:
+          path: |
+            ~/.platformio
+            ~/.cache/pip
+          key: ${{ runner.os }}-pio-${{ hashFiles('firmware/worker/platformio.ini') }}
+          restore-keys: |
+            ${{ runner.os }}-pio-
+
+      - name: Install PlatformIO Core
+        run: |
+          pip install --upgrade platformio
+
+      - name: Compile ESP32 Firmware Binary
+        working-directory: firmware/worker
+        run: |
+          pio run
+          mkdir -p build
+          cp .pio/build/esp32dev/firmware.bin build/firmware.bin
+          ls -lh build/firmware.bin
+
+      - name: Upload ESP32 Firmware Binary Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: esp32-speaker-firmware-bin
+          path: firmware/worker/build/firmware.bin
+          if-no-files-found: error
+          retention-days: 30
