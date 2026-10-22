@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CampusWave AI — Autonomous Smart Campus Radio & IoT Voice Ecosystem</title>
+  <meta name="description" content="AI-Powered Campus Radio & Smart Announcement System with Google Gemini 3.8 Flash RAG, Azure Neural TTS, Flutter UI, and ESP32 I2S Hardware Speaker Nodes.">
+  <link rel="stylesheet" href="app.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 100 100%22><text y=%22.9em%22 font-size=%2290%22>📻</text></svg>">
+</head>
+<body>
+
+  <!-- Site Navigation -->
+  <header class="site-header">
+    <div class="container nav-container">
+      <a href="#" class="brand-logo">
+        <div class="logo-badge">📻</div>
+        <span>CampusWave AI</span>
+      </a>
+      <ul class="nav-links">
+        <li><a href="#radio-player">🎙️ Live Radio</a></li>
+        <li><a href="#student-module">🎓 Student AI</a></li>
+        <li><a href="#admin-studio">🎛️ Admin Studio</a></li>
+        <li><a href="#hardware-lab">⚡ Hardware & OTA</a></li>
+        <li><a href="#api-docs">📡 API</a></li>
+      </ul>
+      <a href="https://github.com/sirim2027-lab/AI_Powered_Campus_Radio_Flutter" target="_blank" class="btn-header-cta">
+        ⭐ GitHub Repository
+      </a>
+    </div>
+  </header>
+
+  <!-- Hero Section -->
+  <section class="hero-section">
+    <div class="container">
+      <div class="hero-pill">
+        <span class="live-indicator"></span>
+        <span>Google Cloud Firestore + Gemini 3.8 Flash + Azure Speech + ESP32 I2S</span>
+      </div>
+      <h1 class="hero-title">
+        Autonomous Smart Campus Radio & <span class="text-gradient">IoT Voice Ecosystem</span>
+      </h1>
+      <p class="hero-subtitle">
+        An enterprise ecosystem delivering scheduled time-of-day broadcasts, departmental voice channels, AI multimodal circular ingestion, and decentralized ESP32 hardware speaker nodes with password-protected Web Consoles and Over-The-Air (OTA) updates.
+      </p>
+      
+      <div class="hero-actions">
+        <a href="#radio-player" class="btn btn-primary">▶ Test Live Radio Player</a>
+        <a href="#hardware-lab" class="btn btn-secondary">⚡ Explore ESP32 Hardware Lab</a>
+      </div>
+
+      <!-- Live Status Grid -->
+      <div class="system-status-grid">
+        <div class="status-pill-card">
+          <div class="status-icon">☁️</div>
+          <div class="status-info">
+            <h4>Google Firestore</h4>
+            <p>Real-Time Sync (0ms)</p>
+          </div>
+        </div>
+        <div class="status-pill-card">
+          <div class="status-icon">🔊</div>
+          <div class="status-info">
+            <h4>Azure Neural Speech</h4>
+            <p>en-IN-NeerjaNeural</p>
+          </div>
+        </div>
+        <div class="status-pill-card">
+          <div class="status-icon">🤖</div>
+          <div class="status-info">
+            <h4>Gemini 3.8 Flash</h4>
+            <p>RAG Grounded</p>
+          </div>
+        </div>
+        <div class="status-pill-card">
+          <div class="status-icon">📶</div>
+          <div class="status-info">
+            <h4>ESP32 Hardware Nodes</h4>
+            <p>Web Console :80 & OTA</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 1: Live Interactive Radio Player -->
+  <section id="radio-player" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Interactive Audio Playground</span>
+        <h2 class="section-title">Live Campus Radio Studio & Departmental Hub</h2>
+        <p class="section-desc">
+          Click any channel below to stream live audio synthesized directly from Azure Cognitive Neural TTS in real time.
+        </p>
+      </div>
+
+      <div class="player-container">
+        <div class="player-channels">
+          <button class="channel-btn active" data-channel="morning">🌅 Morning Chronicle (08:30 AM)</button>
+          <button class="channel-btn" data-channel="midday">☀️ Mid-Day Pulse (01:15 PM)</button>
+          <button class="channel-btn" data-channel="evening">🌆 Evening Preview (04:30 PM)</button>
+          <button class="channel-btn" data-channel="cse">💻 CSE Dept Hub</button>
+          <button class="channel-btn" data-channel="ece">⚡ ECE Dept Hub</button>
+        </div>
+
+        <div class="player-main-view">
+          <div class="track-meta">
+            <h3 id="track-title">🌅 Morning Chronicle (08:30 AM)</h3>
+            <p id="track-desc">Daily campus morning greeting, Thought of the Day, and academic schedule.</p>
+            <span class="voice-badge">🎙️ Azure Neural: en-IN-NeerjaNeural (24kHz / 48kbps MP3)</span>
+          </div>
+
+          <div class="visualizer-container" id="visualizer">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+        </div>
+
+        <div class="player-controls">
+          <button class="play-toggle-btn" id="play-btn" aria-label="Play or Pause Audio">▶</button>
+          <div class="progress-wrap">
+            <div class="progress-bar-bg" id="progress-bar">
+              <div class="progress-bar-fill" id="progress-fill" style="width: 0%;"></div>
+            </div>
+            <div class="progress-time">
+              <span id="time-current">00:00</span>
+              <span id="time-total">00:00</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 2: Student Module & AI Assistant -->
+  <section id="student-module" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Student Experience</span>
+        <h2 class="section-title">AI Campus Assistant & Classroom Broadcasts</h2>
+        <p class="section-desc">
+          Empowering students with conversational Gemini 3.8 Flash RAG insights, instantaneous audio notices, and clean privacy-first UX.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Feature 1: AI Chatbot -->
+        <div class="card">
+          <div class="card-icon">🤖</div>
+          <h3 class="card-title">Gemini 3.8 Flash Assistant</h3>
+          <p class="card-desc">
+            Try asking campus questions grounded in official Firestore circulars, timetable notices, and HOD directories.
+          </p>
+          
+          <div style="display:flex;gap:6px;flex-wrap:wrap;margin-bottom:8px;">
+            <button class="channel-btn prompt-chip" data-qa="lab" style="padding:4px 10px;font-size:0.75rem;">🔬 Lab Timings</button>
+            <button class="channel-btn prompt-chip" data-qa="hod" style="padding:4px 10px;font-size:0.75rem;">👤 CSE HOD</button>
+            <button class="channel-btn prompt-chip" data-qa="exam" style="padding:4px 10px;font-size:0.75rem;">📅 Exam Dates</button>
+          </div>
+
+          <div class="chat-sim-card">
+            <div id="chat-messages" style="display:flex;flex-direction:column;gap:8px;max-height:160px;overflow-y:auto;">
+              <div class="chat-bubble ai">
+                👋 Hello! I am your AI Campus Assistant. Ask me about notices, faculty, or broadcast schedules.
+              </div>
+            </div>
+            <div class="chat-input-row">
+              <input type="text" id="chat-input" placeholder="Type a campus question..." aria-label="Campus Question">
+              <button id="chat-send-btn">Ask</button>
+            </div>
+          </div>
+        </div>
+
+        <!-- Feature 2: In-App Audio & Notice Board -->
+        <div class="card">
+          <div class="card-icon">📢</div>
+          <h3 class="card-title">Classroom Notice Board & Audio</h3>
+          <p class="card-desc">
+            Students receive instantaneous notices with high-priority visual badges, direct <strong>"Listen Announcement"</strong> audio triggers, and no unnecessary internal priority metrics.
+          </p>
+          <div style="background:#0f172a;border:1px solid #334155;border-radius:12px;padding:16px;margin-top:auto;">
+            <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:8px;">
+              <span style="background:#dc2626;color:#fff;font-size:0.7rem;font-weight:800;padding:2px 8px;border-radius:9999px;">URGENT</span>
+              <span style="color:#64748b;font-size:0.75rem;">Today, 10:15 AM</span>
+            </div>
+            <h4 style="font-size:0.95rem;margin-bottom:4px;">Campus Placement Drive Notice</h4>
+            <p style="font-size:0.82rem;color:#94a3b8;margin-bottom:12px;">7th Semester CSE/ISE registration portal is active until 5 PM today.</p>
+            <button class="btn btn-primary" style="width:100%;padding:8px;font-size:0.82rem;justify-content:center;">🔊 Listen Announcement Audio</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 3: Admin Studio & Voice Greetings -->
+  <section id="admin-studio" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Administrative Control Hub</span>
+        <h2 class="section-title">Studio Broadcasting & System Voice Greetings</h2>
+        <p class="section-desc">
+          Manage live campus radio, configure dynamic boot greetings with token replacements, and digitize official posters via Gemini Multimodal Vision.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Voice Greetings Manager Demo -->
+        <div class="card">
+          <div class="card-icon">🎙️</div>
+          <h3 class="card-title">System Voice Greetings Manager</h3>
+          <p class="card-desc">
+            Edit greeting templates with <code>{college}</code> and <code>{classroom}</code> tokens. Click preview to hear them live!
+          </p>
+
+          <div style="background:#0b1120;padding:16px;border-radius:12px;border:1px solid #334155;">
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+              <div>
+                <label style="font-size:0.75rem;color:#94a3b8;">College Name</label>
+                <input type="text" id="vg-college" value="Vemana Institute of Technology" style="width:100%;padding:6px;background:#0f172a;border:1px solid #475569;border-radius:6px;color:#fff;font-size:0.8rem;">
+              </div>
+              <div>
+                <label style="font-size:0.75rem;color:#94a3b8;">Classroom Target</label>
+                <input type="text" id="vg-classroom" value="Seminar Hall 1" style="width:100%;padding:6px;background:#0f172a;border:1px solid #475569;border-radius:6px;color:#fff;font-size:0.8rem;">
+              </div>
+            </div>
+
+            <div style="display:flex;flex-direction:column;gap:8px;">
+              <div style="background:#1e293b;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.82rem;font-weight:700;">First-Time Hardware Registration</div>
+                  <div style="font-size:0.72rem;color:#94a3b8;">Welcome to {college}. This speaker is mapped to {classroom}.</div>
+                </div>
+                <button class="channel-btn btn-vg-preview" data-template="Welcome to {college}. This speaker node is mapped to {classroom}." style="padding:6px 12px;font-size:0.75rem;">▶ Preview</button>
+              </div>
+
+              <div style="background:#1e293b;padding:10px;border-radius:8px;display:flex;align-items:center;justify-content:space-between;">
+                <div>
+                  <div style="font-size:0.82rem;font-weight:700;">Morning Power-On Greeting</div>
+                  <div style="font-size:0.72rem;color:#94a3b8;">Good morning! Welcome to {college}, {classroom}.</div>
+                </div>
+                <button class="channel-btn btn-vg-preview" data-template="Good morning! Welcome to {college}, {classroom}." style="padding:6px 12px;font-size:0.75rem;">▶ Preview</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Multimodal Vision & OCR -->
+        <div class="card">
+          <div class="card-icon">📄</div>
+          <h3 class="card-title">Multimodal Poster & PDF Extraction</h3>
+          <p class="card-desc">
+            Upload official university posters or circulars. Gemini 3.8 Flash automatically generates a structured title, priority, department, and broadcast-ready speech audio.
+          </p>
+          <div style="border:2px dashed #475569;border-radius:12px;padding:24px;text-align:center;background:#0b1120;margin-top:auto;">
+            <div style="font-size:2rem;margin-bottom:6px;">📸 ➔ 🔊</div>
+            <div style="font-weight:700;font-size:0.9rem;">Gemini 3.8 Flash Vision Engine</div>
+            <div style="color:#64748b;font-size:0.8rem;margin-top:4px;">Extracts dates, venues, guidelines & synthesizes speech in 800ms.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 4: Hardware Lab & Live Web Console Simulator -->
+  <section id="hardware-lab" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">IoT Hardware & Firmware</span>
+        <h2 class="section-title">ESP32 Smart Speaker Lab & Web Console</h2>
+        <p class="section-desc">
+          Featuring zero-heap Flash ROM architecture (`PROGMEM`), port 80 embedded Web Console, autonomous 30s SoftAP fallback, and Over-The-Air (OTA) wireless updates.
+        </p>
+      </div>
+
+      <div class="feature-grid">
+        <!-- Hardware Architecture Summary -->
+        <div class="card">
+          <div class="card-icon">⚡</div>
+          <h3 class="card-title">Hardware Pinout & Specifications</h3>
+          <p class="card-desc">
+            Commercial IoT endpoint pairing an ESP32-WROOM-32 with a MAX98357A I2S Class-D DAC amplifier and 4Ω 3W loudspeaker.
+          </p>
+          
+          <table style="width:100%;font-size:0.85rem;border-collapse:collapse;margin-top:auto;">
+            <tr style="border-bottom:1px solid #334155;">
+              <th style="text-align:left;padding:8px 4px;color:#a855f7;">ESP32 Pin</th>
+              <th style="text-align:left;padding:8px 4px;color:#a855f7;">Module Signal</th>
+              <th style="text-align:left;padding:8px 4px;color:#a855f7;">Function</th>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:6px 4px;font-family:monospace;color:#38bdf8;">GPIO 25</td>
+              <td style="padding:6px 4px;">LRC / WSEL</td>
+              <td style="padding:6px 4px;color:#94a3b8;">Left/Right Word Clock</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:6px 4px;font-family:monospace;color:#38bdf8;">GPIO 26</td>
+              <td style="padding:6px 4px;">BCLK / CLK</td>
+              <td style="padding:6px 4px;color:#94a3b8;">Continuous Bit Clock</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:6px 4px;font-family:monospace;color:#38bdf8;">GPIO 27</td>
+              <td style="padding:6px 4px;">DIN / DATA</td>
+              <td style="padding:6px 4px;color:#94a3b8;">Serial Audio Data</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.05);">
+              <td style="padding:6px 4px;font-family:monospace;color:#38bdf8;">GPIO 2</td>
+              <td style="padding:6px 4px;">Blue LED</td>
+              <td style="padding:6px 4px;color:#94a3b8;">Solid=Online, Blink=Setup</td>
+            </tr>
+            <tr>
+              <td style="padding:6px 4px;font-family:monospace;color:#38bdf8;">GPIO 0</td>
+              <td style="padding:6px 4px;">BOOT Button</td>
+              <td style="padding:6px 4px;color:#94a3b8;">5s Hold = Captive Hotspot</td>
+            </tr>
+          </table>
+        </div>
+
+        <!-- Interactive In-Speaker Web Console Simulator -->
+        <div class="card">
+          <div class="card-icon">🌐</div>
+          <h3 class="card-title">In-Speaker Web Console Simulator</h3>
+          <p class="card-desc">
+            Experience the actual embedded web interface running on <code>http://&lt;speaker-ip&gt;</code> (Auth: <code>admin</code> / <code>CampusAdmin@2026</code>).
+          </p>
+
+          <div class="speaker-console-sim">
+            <div class="sim-header">
+              <span style="color:#a855f7;font-weight:bold;font-size:0.9rem;">📻 Speaker Console (Port 80)</span>
+              <span style="color:#10b981;font-size:0.75rem;font-weight:bold;">● ONLINE</span>
+            </div>
+
+            <div class="sim-box">
+              <h4>Classroom Telemetry</h4>
+              <p>
+                <b>Room:</b> Seminar Hall 1<br>
+                <b>MAC:</b> 08:A6:F7:5A:A5:D8<br>
+                <b>IP:</b> 192.168.1.145<br>
+                <b>Wi-Fi:</b> Campus_Secure_5G (-52 dBm)
+              </p>
+            </div>
+
+            <div class="sim-box">
+              <h4>🚀 Wireless Firmware Update (OTA)</h4>
+              <div style="font-size:0.75rem;color:#94a3b8;margin-bottom:6px;">Select firmware.bin and flash over Wi-Fi:</div>
+              <button class="sim-btn sim-btn-green" id="sim-ota-btn">Flash Firmware OTA</button>
+              <div id="sim-ota-status" style="display:none;font-size:0.75rem;color:#c084fc;margin-top:8px;font-weight:bold;"></div>
+              <div style="background:#0f172a;height:6px;border-radius:9999px;margin-top:6px;overflow:hidden;">
+                <div id="sim-ota-progress" style="width:0%;height:100%;background:#10b981;transition:width 0.2s;"></div>
+              </div>
+            </div>
+
+            <div class="sim-box">
+              <h4>📶 Change Wi-Fi</h4>
+              <input type="text" class="sim-input" placeholder="New Wi-Fi SSID" value="Vemana_Faculty_Wi-Fi">
+              <input type="password" class="sim-input" placeholder="New Wi-Fi Password" value="••••••••">
+              <button class="sim-btn">Save & Reconnect</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Section 5: REST API Explorer -->
+  <section id="api-docs" class="section">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag">Developer & Integration Hub</span>
+        <h2 class="section-title">REST API Reference & Interactive Explorer</h2>
+        <p class="section-desc">
+          Explore cloud endpoints for Azure TTS audio streaming, AI assistants, and hardware dispatchers.
+        </p>
+      </div>
+
+      <div style="max-width:880px;margin:0 auto;">
+        <div class="api-tabs">
+          <button class="api-tab-btn active" data-api="health">GET /health</button>
+          <button class="api-tab-btn" data-api="thought">GET /thought-of-the-day.mp3</button>
+          <button class="api-tab-btn" data-api="radioTrigger">POST /radio/trigger/:show</button>
+          <button class="api-tab-btn" data-api="aiChat">POST /api/student/chat</button>
+        </div>
+
+        <div class="api-viewer">
+          <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px;">
+            <span id="api-method" class="method-badge method-get" style="background:#059669;color:#fff;padding:2px 8px;border-radius:4px;font-weight:bold;">GET</span>
+            <span id="api-url" style="color:#f8fafc;font-weight:bold;">/health</span>
+          </div>
+
+          <div style="color:#94a3b8;margin-bottom:6px;font-size:0.78rem;">cURL Command:</div>
+          <pre id="api-curl" style="background:#0f172a;padding:12px;border-radius:8px;border:1px solid #334155;color:#38bdf8;margin-bottom:14px;overflow-x:auto;white-space:pre-wrap;"></pre>
+
+          <div style="color:#94a3b8;margin-bottom:6px;font-size:0.78rem;">Sample Response (JSON):</div>
+          <pre id="api-json" style="background:#0f172a;padding:12px;border-radius:8px;border:1px solid #334155;color:#10b981;overflow-x:auto;"></pre>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Site Footer -->
+  <footer class="site-footer">
+    <div class="container">
+      <ul class="footer-links">
+        <li><a href="https://github.com/sirim2027-lab/AI_Powered_Campus_Radio_Flutter" target="_blank">GitHub Repository</a></li>
+        <li><a href="wifi_provisioning_guide.md">Wi-Fi & OTA Guide</a></li>
+        <li><a href="hardware_and_firmware_guide.md">Hardware Guide</a></li>
+        <li><a href="system_architecture_and_design.md">Architecture Specification</a></li>
+      </ul>
+      <p>© 2026 CampusWave AI Ecosystem • Built with Flutter, Google Cloud Firestore, Gemini 3.8 Flash, Azure Neural TTS & ESP32 FreeRTOS.</p>
+    </div>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
