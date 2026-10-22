@@ -1,0 +1,16 @@
+{
+  "name": "campus-radio-tts-bridge",
+  "version": "1.0.0",
+  "description": "Azure Neural TTS Server & Automated Firestore Bridge for ESP32",
+  "main": "speak_server.js",
+  "scripts": {
+    "start": "node speak_server.js",
+    "test:flutter": "cd admin_app && flutter test",
+    "test:audit": "node scripts/system_health_audit.js",
+    "test:load": "node scripts/load_test_tts.js",
+    "test:full": "npm run test:audit && cd admin_app && flutter test && cd .. && npm run test:load"
+  },
+  "dependencies": {
+    "express": "^5.2.1"
+  }
+}
